@@ -12,11 +12,12 @@ export const App = () =>  {
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
   ]);
 
-  const handleSetContacts = () => {
-    if(newContact) {
-      setContacts(oldContactsState => [...oldContactsState, newContact]);
-    }
-  }
+  // const handleSetContacts = () => {
+  //   if(newContact) {
+
+  //     setContacts(oldContactsState => [...oldContactsState, newContact]);
+  //   }
+  // }
 
 
 
@@ -34,12 +35,15 @@ export const App = () =>  {
     if (!newContact) {
       return
     }
-
-    if (contacts.find(item => item.name.toLowerCase() === newContact.name.toLowerCase())) {
-      return alert(`${newContact.name} is already in contacts`);
-    } else {
-      handleSetContacts();
-    }
+    setContacts(oldContactsState => {
+      if (!oldContactsState.find(item => item.name.toLowerCase() === newContact.name.toLowerCase())) {
+        return [...oldContactsState, newContact]
+      } else {
+        alert(`${newContact.name} is already in contacts`);
+        return oldContactsState;
+      }
+      
+    })
     
   },[newContact]);
 
@@ -51,7 +55,7 @@ export const App = () =>  {
     setContacts(oldState => [...oldState].filter(item => item.id !== deletedItemId));
   }
 
-  
+ 
 
   
   
