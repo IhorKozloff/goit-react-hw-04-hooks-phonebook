@@ -1,12 +1,13 @@
 import React from "react";
 import { ContactsItem } from "components/ContactsItem/ContactsItem";
 
-export const ContactsList = ({data, actions}) => {
+export const ContactsList = ({data, filter, actions}) => {
 
    return <ul>
         {
-            data.contacts.map(item => {
-                if(item.name.toLowerCase().includes(data.filter)) {
+  
+            data.map(item => {
+                if (item.name.toLowerCase().includes(filter)) {
                     return (
                         <ContactsItem key={item.id} 
                             id={item.id} 
@@ -16,8 +17,10 @@ export const ContactsList = ({data, actions}) => {
                         />
                     )
                 } else {
-                  return ''
+                    return ''
                 }
+                    
+                
                 
             })
         }

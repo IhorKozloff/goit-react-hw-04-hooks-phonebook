@@ -1,32 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
 import { Formik } from 'formik';
 import { InputStyled, DataForm, InputWrapper } from 'components/Form/Form.styled';
 // import * as yup from 'yup';
 import { nanoid } from 'nanoid';
 
-export class ContactsForm extends Component {
+export const ContactsForm = ({setNewContact}) => {
 
-    state = {
-        name: '',
-        number:'',
-    }
-
-    onFormSubmit = (values, {resetForm}) => {
+    const onFormSubmit = (values, {resetForm}) => {
         const newContact = {
-        id: nanoid(),
-        name: values.name,
-        number: values.number,
+            id: nanoid(),
+            name: values.name,
+            number: values.number,
         }
 
-        this.props.onAddNewContact(newContact)
+        setNewContact(newContact);
         
-        resetForm()
+        resetForm();
     }
 
-    render () {
+
         return (
             <>
-                <Formik initialValues={this.state} onSubmit={this.onFormSubmit}>
+                <Formik initialValues={{name:"", number:""}} onSubmit={onFormSubmit}>
                     <DataForm name='myFirstReactForm'>
                         <InputWrapper htmlFor="name">
                         Name
@@ -55,7 +50,7 @@ export class ContactsForm extends Component {
                 </Formik>
             </>
         )
-    }
+
 
 
 }
