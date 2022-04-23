@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 import { ContactActionBtn, ContactItem, ContactNumber  } from 'components/ContactsItem/ContactsItem.styled';
 
 
@@ -14,5 +15,12 @@ export const ContactsItem = ({ id, name, number, actionOnClick }) => {
                 Delete
             </ContactActionBtn>
         </ContactItem >
-    )
-}
+    );
+};
+
+ContactsItem.propTypes = {
+    id: PropTypes.string.isRequired, 
+    name: PropTypes.string.isRequired, 
+    number: PropTypes.string.isRequired, 
+    actionOnClick: PropTypes.func.isRequired,
+};

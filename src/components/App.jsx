@@ -11,26 +11,15 @@ export const App = () =>  {
     {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
   ]);
-
-  // const handleSetContacts = () => {
-  //   if(newContact) {
-
-  //     setContacts(oldContactsState => [...oldContactsState, newContact]);
-  //   }
-  // }
-
-
+  const [newContact, setNewContact] = useState(undefined);
 
   const [filter, setFilter] = useState('');
 
-  const hendleOnFilterChange = (event) => {
+  function hendleOnFilterChange (event) {
     setFilter(event.target.value)
-  }
+  };
 
 
-
-  const [newContact, setNewContact] = useState(undefined);
-  
   useEffect(() => {
     if (!newContact) {
       return
@@ -48,12 +37,9 @@ export const App = () =>  {
   },[newContact]);
 
 
-
-
-
   const onDeleteContact = (deletedItemId) => {
     setContacts(oldState => [...oldState].filter(item => item.id !== deletedItemId));
-  }
+  };
 
  
 
@@ -69,9 +55,6 @@ export const App = () =>  {
       <ContactsList data={contacts} filter={filter} actions={onDeleteContact}/>
         
     </>
-      
-  )
-
-
-
+    
+  );
 };

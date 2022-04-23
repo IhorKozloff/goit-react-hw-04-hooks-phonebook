@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 import { ContactsItem } from "components/ContactsItem/ContactsItem";
 
 export const ContactsList = ({data, filter, actions}) => {
 
    return <ul>
         {
-  
             data.map(item => {
                 if (item.name.toLowerCase().includes(filter)) {
                     return (
@@ -18,11 +18,14 @@ export const ContactsList = ({data, filter, actions}) => {
                     )
                 } else {
                     return ''
-                }
-                    
-                
-                
+                };  
             })
         }
     </ul>
-}
+};
+
+ContactsList.propTypes = {
+    data: PropTypes.array.isRequired, 
+    filter: PropTypes.string.isRequired, 
+    actions: PropTypes.func.isRequired,
+};

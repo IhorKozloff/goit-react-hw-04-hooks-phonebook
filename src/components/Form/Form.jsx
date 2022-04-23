@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { InputStyled, DataForm, InputWrapper } from 'components/Form/Form.styled';
 // import * as yup from 'yup';
@@ -11,12 +12,12 @@ export const ContactsForm = ({setNewContact}) => {
             id: nanoid(),
             name: values.name,
             number: values.number,
-        }
+        };
 
         setNewContact(newContact);
         
         resetForm();
-    }
+    };
 
 
         return (
@@ -49,8 +50,10 @@ export const ContactsForm = ({setNewContact}) => {
                     </DataForm>
                 </Formik>
             </>
-        )
+        );
+};
 
 
-
-}
+ContactsForm.propTypes = {
+    setNewContact: PropTypes.func.isRequired,
+};
